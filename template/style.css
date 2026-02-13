@@ -217,6 +217,41 @@ img {
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
 
+.logo-container {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 2;
+}
+
+.logo-container.hidden {
+  display: none;
+}
+
+.company-logo {
+  max-width: 80px;
+  max-height: 40px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  transition: opacity var(--transition-fast);
+}
+
+.company-logo:hover {
+  opacity: 1;
+}
+
+/* Logo variants for different themes */
+.theme-minimal .company-logo {
+  filter: none;
+}
+
+.theme-bold .company-logo {
+  filter: none;
+}
+
 .avatar-container {
   position: relative;
   z-index: 1;

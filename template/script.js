@@ -90,11 +90,21 @@
    * Render header section
    */
   function renderHeader() {
+    const logoContainer = document.getElementById('logoContainer');
+    const logo = document.getElementById('logo');
     const avatar = document.getElementById('avatar');
     const name = document.getElementById('name');
     const title = document.getElementById('title');
     const company = document.getElementById('company');
     const tagline = document.getElementById('tagline');
+
+    // Render company logo
+    if (cardConfig.logo) {
+      logo.src = cardConfig.logo;
+      logo.alt = `${cardConfig.company || 'Company'} logo`;
+    } else {
+      logoContainer.classList.add('hidden');
+    }
 
     if (cardConfig.avatar) {
       avatar.src = cardConfig.avatar;

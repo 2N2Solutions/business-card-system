@@ -12,6 +12,9 @@ const cardConfig = {
   // Profile Image
   avatar: "../assets/images/default-avatar.svg",
 
+  // Company Logo (optional)
+  logo: "",
+
   // Theme Selection: 'professional', 'modern', 'minimal', 'bold', 'elegant'
   theme: "professional",
 

@@ -123,7 +123,8 @@
       title: formData.get('title') || '',
       company: formData.get('company') || '',
       tagline: formData.get('tagline') || '',
-      avatar: formData.get('avatar') || '../assets/images/default-avatar.png',
+      avatar: formData.get('avatar') || '../assets/images/default-avatar.svg',
+      logo: formData.get('logo') || '',
       theme: theme,
       customColors: {
         enabled: customColorsCheckbox?.checked || false,
@@ -226,6 +227,7 @@
   <div class="card-container">
     <div class="card">
       <header class="card-header">
+        ${config.logo ? `<img src="${config.logo}" alt="Logo" class="company-logo" onerror="this.style.display='none'">` : ''}
         <img src="${config.avatar}" alt="" class="avatar" onerror="this.style.display='none'">
         <h1 class="name">${config.name || 'Your Name'}</h1>
         <p class="title">${config.title || 'Your Title'}</p>
@@ -300,6 +302,16 @@
         height: 40px;
         background: white;
         border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      }
+      .company-logo {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        max-width: 60px;
+        max-height: 30px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        opacity: 0.9;
       }
       .avatar {
         width: 80px;
