@@ -6,8 +6,7 @@ A complete template system for creating professional digital business cards with
 
 ## Current Status
 
-**Status**: Complete and ready for use
-
+**Status**: Feature complete, ready for use
 **Last Updated**: 2026-02-13
 
 ## Tech Stack
@@ -29,21 +28,14 @@ A complete template system for creating professional digital business cards with
 | `admin/qr-generator.html` | QR code generation |
 | `build/build-script.js` | CLI for creating new clients |
 
-## Themes
+## Features
 
-5 themes implemented in `template/style.css`:
-1. Professional (blue gradient)
-2. Modern (purple gradient)
-3. Minimal (grayscale)
-4. Bold (dark with red accents)
-5. Elegant (gold accents)
-
-## Development Notes
-
-- All icons are inline SVGs (no external icon library)
-- Google Fonts: Inter (body) + Playfair Display (elegant theme)
-- QR code uses cdn.jsdelivr.net/npm/qrcode library in admin panel
-- vCard generation is client-side JavaScript
+- **5 Themes**: Professional, Modern, Minimal, Bold, Elegant
+- **Company Logo**: Displays in top-right of card header
+- **vCard Export**: One-tap contact saving
+- **QR Code Generator**: Single and batch generation
+- **Responsive Design**: Mobile-first, works on all devices
+- **Custom Colors**: Override theme colors with brand colors
 
 ## Quick Commands
 
@@ -53,6 +45,7 @@ npm install
 
 # Start admin panel
 npm run serve:admin
+# Opens at http://localhost:3001
 
 # Preview an example
 npx serve examples/sample-client
@@ -60,6 +53,10 @@ npx serve examples/sample-client
 # Build a new client
 npm run build
 ```
+
+## GitHub Repository
+
+https://github.com/2N2Solutions/business-card-system
 
 ## Session History
 
@@ -72,3 +69,18 @@ npm run build
 - Created build script for client deployment
 - Added 2 example clients (Rachel Branton, Alex Chen)
 - Wrote comprehensive documentation
+- **Commit**: `f907e96` - Initial commit
+
+### 2026-02-13 - Logo Feature
+- Added company logo support to cards
+- Logo displays in top-right corner of header
+- Added logo input to admin generator
+- Updated preview to show logo
+- **Commit**: `7070bf3` - Add company logo feature
+
+## Next Steps (When Resuming)
+
+- Add more example clients with logos
+- Consider adding logo position options (left/right/center)
+- Add image upload capability to admin panel
+- Consider PWA support for offline viewing
