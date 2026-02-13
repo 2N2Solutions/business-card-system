@@ -1,0 +1,23 @@
+{
+  "name": "business-card-system",
+  "version": "1.0.0",
+  "description": "Digital business card template system with admin panel and QR code generator",
+  "main": "build/build-script.js",
+  "scripts": {
+    "build": "node build/build-script.js",
+    "build:client": "node build/build-script.js --client",
+    "serve": "npx serve .",
+    "serve:admin": "npx serve admin -p 3001"
+  },
+  "keywords": [
+    "business-card",
+    "digital-card",
+    "vcard",
+    "qr-code"
+  ],
+  "author": "2N2 Solutions",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

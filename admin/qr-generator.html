@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Generator - Admin Panel</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1 class="logo">Card Admin</h1>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          Dashboard
+        </a>
+        <a href="generator.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <line x1="12" y1="8" x2="12" y2="16"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+          Card Generator
+        </a>
+        <a href="qr-generator.html" class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          QR Generator
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <p>v1.0.0</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="page-header">
+        <h2>QR Code Generator</h2>
+        <p>Generate QR codes for your digital business cards</p>
+      </header>
+
+      <div class="qr-generator-layout">
+        <!-- QR Form -->
+        <section class="form-card">
+          <h3>QR Code Settings</h3>
+          <form id="qrForm">
+            <div class="form-group">
+              <label for="qrUrl">Card URL *</label>
+              <input type="url" id="qrUrl" name="qrUrl" required
+                     placeholder="https://yoursite.com/cards/john-smith">
+              <small>Enter the full URL where your digital business card will be hosted</small>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="qrSize">Size (pixels)</label>
+                <select id="qrSize" name="qrSize">
+                  <option value="128">128 x 128</option>
+                  <option value="256" selected>256 x 256</option>
+                  <option value="512">512 x 512</option>
+                  <option value="1024">1024 x 1024</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="qrFormat">Format</label>
+                <select id="qrFormat" name="qrFormat">
+                  <option value="png" selected>PNG</option>
+                  <option value="svg">SVG</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="qrForeground">Foreground Color</label>
+                <div class="color-input">
+                  <input type="color" id="qrForeground" name="qrForeground" value="#000000">
+                  <input type="text" id="qrForegroundText" value="#000000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="qrBackground">Background Color</label>
+                <div class="color-input">
+                  <input type="color" id="qrBackground" name="qrBackground" value="#ffffff">
+                  <input type="text" id="qrBackgroundText" value="#ffffff">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="qrErrorCorrection">Error Correction Level</label>
+              <select id="qrErrorCorrection" name="qrErrorCorrection">
+                <option value="L">Low (7%)</option>
+                <option value="M" selected>Medium (15%)</option>
+                <option value="Q">Quartile (25%)</option>
+                <option value="H">High (30%)</option>
+              </select>
+              <small>Higher correction allows for more damage but results in denser QR codes</small>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="qrIncludeMargin" name="qrIncludeMargin" checked>
+                <span>Include quiet zone (margin)</span>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Generate QR Code</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- QR Preview -->
+        <section class="form-card qr-preview-card">
+          <h3>Preview</h3>
+          <div class="qr-preview" id="qrPreview">
+            <div class="qr-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+              </svg>
+              <p>Enter a URL and click Generate</p>
+            </div>
+          </div>
+          <div class="qr-actions hidden" id="qrActions">
+            <button class="btn btn-secondary" id="downloadQr">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download
+            </button>
+            <button class="btn btn-secondary" id="copyQrUrl">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              Copy Data URL
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Batch Generator -->
+      <section class="form-card" style="margin-top: 2rem;">
+        <h3>Batch Generate</h3>
+        <p>Generate multiple QR codes at once by entering URLs (one per line):</p>
+        <div class="form-group">
+          <textarea id="batchUrls" rows="5"
+                    placeholder="https://yoursite.com/cards/john-smith&#10;https://yoursite.com/cards/jane-doe&#10;https://yoursite.com/cards/bob-wilson"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" id="batchGenerate">Generate All</button>
+        </div>
+        <div class="batch-results hidden" id="batchResults">
+          <h4>Generated QR Codes</h4>
+          <div class="batch-grid" id="batchGrid"></div>
+          <button class="btn btn-primary" id="downloadAllBtn">Download All as ZIP</button>
+        </div>
+      </section>
+
+      <!-- Usage Tips -->
+      <section class="form-card" style="margin-top: 2rem;">
+        <h3>Usage Tips</h3>
+        <div class="tips-grid">
+          <div class="tip">
+            <h4>Print Quality</h4>
+            <p>For print materials, use 512x512 or larger. Use SVG format for vector scalability.</p>
+          </div>
+          <div class="tip">
+            <h4>Color Contrast</h4>
+            <p>Ensure high contrast between foreground and background for reliable scanning.</p>
+          </div>
+          <div class="tip">
+            <h4>Error Correction</h4>
+            <p>Use higher error correction if adding logos or if the QR code might get damaged.</p>
+          </div>
+          <div class="tip">
+            <h4>Testing</h4>
+            <p>Always test your QR code with multiple devices before printing.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- QR Code Library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="admin-script.js"></script>
+</body>
+</html>

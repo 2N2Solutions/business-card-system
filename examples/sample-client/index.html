@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#8b5cf6">
+  <meta name="description" content="Alex Chen - Full Stack Developer at TechForward Inc">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alex Chen | Digital Business Card">
+  <meta property="og:description" content="Full Stack Developer at TechForward Inc">
+
+  <title>Alex Chen | Digital Business Card</title>
+
+  <link rel="stylesheet" href="../../template/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="card-container">
+    <div class="card" id="businessCard">
+      <header class="card-header">
+        <div class="avatar-container">
+          <img id="avatar" src="../../assets/images/default-avatar.svg" alt="Profile Photo" class="avatar">
+        </div>
+        <h1 id="name" class="name">Alex Chen</h1>
+        <p id="title" class="title">Full Stack Developer</p>
+        <p id="company" class="company">TechForward Inc</p>
+        <p id="tagline" class="tagline"></p>
+      </header>
+
+      <section class="contact-info">
+        <div class="contact-item" id="emailItem">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <a id="emailLink" href="mailto:"></a>
+        </div>
+        <div class="contact-item" id="phoneItem">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a id="phoneLink" href="tel:"></a>
+        </div>
+        <div class="contact-item" id="websiteItem">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <a id="websiteLink" href="" target="_blank" rel="noopener"></a>
+        </div>
+        <div class="contact-item" id="locationItem">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span id="location"></span>
+        </div>
+      </section>
+
+      <section class="actions" id="actions"></section>
+      <section class="social-links" id="socialLinks"></section>
+
+      <footer class="card-footer" id="footer">
+        <p id="footerText"></p>
+      </footer>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">
+    <span id="toastMessage"></span>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="../../template/script.js"></script>
+</body>
+</html>
